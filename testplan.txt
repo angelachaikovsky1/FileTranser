@@ -1,0 +1,99 @@
+﻿Text File and Command Line Issues
+Command line: ./fileSort
+        Text file: <does not exist>
+        Description: Test for proper error checking, where 2 command line arguments were 
+	missing. Needed to verify that I outputted “Fatal Error: expected two arguments, had 0”. 
+
+
+Command line: ./fileSort -i or Command line: ./fileSort test.txt
+        Text file: <does not exist>
+        Description: Test for proper error checking, where 1 command line arguments were 
+	missing. Needed to verify that I outputted “Fatal Error: expected two arguments, had 1”. 
+
+
+Command line: ./fileSort -i test.txt
+        Text file: 
+	Description: Testing for proper error checking, in this case, checking for empty file and 
+	making sure this could actually happen and not break anything.
+
+
+Command line: ./fileSort -r test.txt
+        Text file: 
+	Description: Testing for proper error checking, in this case, verifying if the sort type was
+	valid or not.
+
+
+Command line: ./fileSort -i -i
+        Text file: 
+	Description: Testing for proper error checking, in this case, checking if the file exists or 
+	not.
+
+
+Command line: ./fileSort -i test.txt
+        Text file: ,,
+Description: Tested that on the event of only commas print empty strings by default 
+(since type is ambiguous).
+
+
+Command line: ./fileSort -i test.txt
+        Text file: , 0, -1,
+	Description: Made sure the ambiguity of a comma started list is restored as an integer 0 
+	on the event the data type are ints. And made sure to ignore ending commas when 
+	parsing.
+
+
+Command line: ./fileSort -i test.txt
+        Text file: , this, is, a ,, test
+	Description: Additionally, made sure ambiguity of comma remains as string type in the
+	event of a character type file, and that ending on EOF instead of comma still renders as 
+	EOF.
+
+
+Sorting Issues
+Command line: ./fileSort -i test.txt or Command line: ./fileSort -q test.txt
+
+
+Text File: 1,2,3,4,5,6,7
+Description: If the file was already sorted, the order would not be changed when processed by the sorting algorithm.
+
+
+Text File: 1 0 0 0 0, -111,
+Description: Made sure to ignore the white spaces and render the number as if it was 
+never separated by spaces.
+
+
+Text file: -12, 2, 4, 20, -12, 5, 5
+Description: Testing for sorting with text files that include duplicate integers and negative integers
+
+
+Text file: -1 2, 2, 4, 2 0, -1 2, 5,5
+Description: Testing for reading and sorting integers within files that have spaces in 
+in between them
+
+
+Text file: 9,8,7,6,5,4,3,2,1 0
+Description: Testing for sorting a list of completely reversed integers
+
+
+Text file: ,,, ,2,6,1,0,2,
+Description: Testing files that included blank entries/ consecutive commas and automatically filled in 0’s for those entries. These entries were then sorted accordingly and correctly. Also, ending on a comma does not produce an additional 0.
+
+
+Text file: apple, bat, cat, dare
+Description: Testing files that are already sorted and making sure they are not changed by the sorting algorithm
+
+
+Text file: dare, cat, bat, apple
+Description: Making sure that files that are completely reversed are sorted properly
+
+
+Text file: cool, apple, cool, coolio, bear
+Description: Testing files that included strings that were either identical or started with the same consecutive characters to make sure they would still be properly sorted
+
+
+Text file: cool, wood, , , , dog, , bye,
+Description: Testing files that included blank entries/consecutive commas and converted them into null terminating characters and sorting accordingly. Also, ending on a comma does not produce an empty string.
+
+
+Text file: co ol, wo od, bear, care
+Description: Testing files with strings that had spaces between them and removing those spaces to sort the strings accordingly
